@@ -1,0 +1,6 @@
+default["stud"]["user"] = "www-data"
+default["stud"]["group"] = "www-data"
+default["stud"]["src_dir"] = "/usr/src/stud"
+default["stud"]["dst_dir"] = "/usr/local/bin"
+default["stud"]["repo"] = "https://github.com/bumptech/stud.git"
+default["stud"]["branch_tag"] = "master"

@@ -1,0 +1,3 @@
+#!/bin/sh
+ulimit -n 65536
+stud --ssl -n 2 -c "TLSv1+HIGH:\!SSLv2:RC4+MEDIUM:\!aNULL:\!eNULL:\!3DES:@STRENGTH" -f "0.0.0.0,443" -b "127.0.0.1,81" -u haproxy --write-proxy /etc/cert.pem
