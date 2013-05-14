@@ -59,7 +59,7 @@ execute "make-stud" do
   user node["stud"]["user"]
   group node["stud"]["user"]
   action :nothing
-  notifies :run, "service[install-stud]", :immediately
+  notifies :start, "service[install-stud]", :immediately
 end
 
 git "#{Chef::Config["file_cache_path"]}/stud" do
@@ -68,13 +68,13 @@ git "#{Chef::Config["file_cache_path"]}/stud" do
     action :sync
     user node["stud"]["user"]
     group node["stud"]["user"]
-    notifies :run, "service[make-stud]", :immediately
+    notifies :start, "service[make-stud]", :immediately
     only_if { node["stud"]["build"] }
 end
 
 runit_service "stud"
 
-service "stud" do
-  supports :restart => true, :status => true, :reload => true
-  action [:enable, :start]
-end
+#service "stud" do
+#  supports :restart => true, :status => true, :reload => true
+#  action [:enable, :start]
+#end
